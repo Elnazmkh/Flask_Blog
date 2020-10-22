@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body {background-color: powderblue;}
+h1   {color: blue;}
+p    {color: red;}
+
+/* The switch - the box around the slider */
+.switch {
+
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+
+.slider:before {
+
+  position: absolute;
+  content:'';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:after {
+  content:"OFF";
+  color: white;
+  display: block;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 70%;
+  font-size: 8px;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked + .slider:after {
+  content:'ON';
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 30%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+} 
+
+</style>
+
+
+<script type="text/javascript">
+// To Show Checked Items
+	function showCheckedInputs() {
+	  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+	  var checkedInputs = [];
+	  for (var i = 0; i < checkboxes.length; i++) {
+	    if(checkboxes[i].checked) {
+	      checkedInputs.push(checkboxes[i].id)
+	    }
+	  }
+	  console.log(checkedInputs);
+	  document.getElementById('result').innerHTML = checkedInputs.join(', ');
+	}
+
+
+// To Show unChecked Items
+	function showUncheckedInputs() {
+	  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+	  var uncheckedInputs = [];
+	  for (var i = 0; i < checkboxes.length; i++) {
+	    if(!(checkboxes[i].checked)) {
+	      uncheckedInputs.push(checkboxes[i].id)
+	    }
+	  }
+	  console.log(uncheckedInputs);
+	  document.getElementById('result2').innerHTML = uncheckedInputs.join(', ');
+	}
+
+// To show the status of a given item
+	function showStatus(x) {
+		 var flag = false;
+		 var str2 = "";
+		 var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		 for (var i = 0; i < checkboxes.length; i++)
+		 {
+		 str2 = checkboxes[i].id.toLowerCase();
+		 if (x == str2)
+		 	{
+		 	flag =true;
+		 	if(checkboxes[i].checked)
+			  alert("The Staus is On " );
+		 	else
+		 	  alert("The Status is OFF ");
+		 	}
+		 }
+	    if (flag == false)
+	    	alert("Invalid Item");
+	  }
+
+
+
+
+//to change the status of an item
+	function changeStatus(x){
+	  var flag = false;
+	  //var str = document.getElementById("text2").value.toLowerCase();
+	  var str2 = "";
+	  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+	  
+	  for (var i = 0; i < checkboxes.length; i++)
+		 {
+		 str2 = checkboxes[i].id.toLowerCase();
+		 if (x == str2)
+		 	{
+		 	flag =true;
+		 	if(checkboxes[i].checked)
+			  document.getElementById(checkboxes[i].id).checked = false;
+		 	else
+		 	  document.getElementById(checkboxes[i].id).checked = true;
+		 	}
+		 }
+		if (flag == false)
+	    	alert("Invalid Item ");
+	}
+
+//End of scripts
+</script>
+</head>
+
+
+<body>
+	<h2> <right>List of Items</right></h2>
+
+<table style="width:10%">
+  <tr>
+    <td>Elnaz</td>
+    <td>
+    	<label class="switch">
+		<id name="Elnaz">
+		<input id ="Elnaz" type="checkbox" unchecked>
+		<span class="slider round"></span>
+		</label>
+	</td> 
+  </tr>
+
+  <tr>
+    <td>Hamed</td>
+    <td>
+    	<label class="switch">
+		<id name="Hamed">
+		<input id ="Hamed" type="checkbox" unchecked>
+		<span class="slider round"></span>
+		</label>
+	</td> 
+  </tr>
+
+  <tr>
+   <td>Parastoo</td>
+    <td>
+    	<label class="switch">
+		<id name="Parastoo">
+		<input  id ="Parastoo" type="checkbox" unchecked>
+		<span class="slider round"></span>
+		</label>
+	</td> 
+  </tr>
+
+  <tr>
+    <td>Elmira</td>
+    <td>
+    	<label class="switch">
+		<id name="Elmira">
+		<input  id ="Elmira" type="checkbox" unchecked>
+		<span class="slider round"></span>
+		</label>
+	</td> 
+  </tr>
+
+  <tr>
+    <td>Mostafa</td>
+    <td>
+    	<label class="switch">
+		<id name="Mostafa">
+		<input  id ="Mostafa" type="checkbox" unchecked>
+		<span class="slider round"></span>
+		</label>
+	</td> 
+  </tr>
+</table>
+
+
+<button onclick="showCheckedInputs()">Show Checked Items</button>
+<code id ='result'></code>
+<br></br>
+
+
+
+<button onclick="showUncheckedInputs()">Show Unhecked Items</button>
+<code id ='result2'></code>
+<br></br>
+
+
+
+<input id = "text1" placeholder="Enter Item">
+<button onclick = "showStatus(document.getElementById('text1').value.toLowerCase())"> Show the Status </button>
+<br></br>
+
+
+
+
+<input id = "text2" placeholder="Enter Item">
+<button onclick = "changeStatus(document.getElementById('text2').value.toLowerCase())"> Change the Status </button>
+<br></br>
+
+
+<select id = "mylist" style="width: 17%;">
+<option value="Select">Select....</option>
+<option value="Elnaz">Elnaz</option>
+<option value="Hamed">Hamed</option>
+<option value="Parastoo">Parastoo</option>
+<option value="Elmira">Elmira</option>
+<option value="Mostafa">Mostafa</option>
+</select>
+
+<br></br>
+<button onclick = "showStatus(document.getElementById('mylist').value.toLowerCase())"> Show the Status </button>
+<button onclick = "changeStatus(document.getElementById('mylist').value.toLowerCase())"> Change the Status </button>
+<br></br>
+
+
+</body>
+</html> 
